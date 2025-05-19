@@ -4,11 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class LoginValidCredentialsTest {
-    public static void main(String[] args) {
 
+    @Test
+    public void testLoginWithValidCredentials() {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -23,5 +26,8 @@ public class LoginValidCredentialsTest {
 
         WebElement SignInButton = driver.findElement(By.xpath("//button[@class='btn']"));
         SignInButton.click();
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://mexil.it/chroma/admin/admin/dashboard");
+        driver.quit();
     }
 }
