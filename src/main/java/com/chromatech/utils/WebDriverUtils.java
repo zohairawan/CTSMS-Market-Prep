@@ -29,16 +29,17 @@ public class WebDriverUtils {
 
         ConfigReader.readProperties(FrameworkConstants.LOCAL_TEST_SETTINGS_FILEPATH);
         String browser = ConfigReader.getPropertyValue("browser");
-        String isHeadless = (ConfigReader.getPropertyValue("headless"));
+//        String isHeadless = (ConfigReader.getPropertyValue("headless"));
 
         if (browser.equalsIgnoreCase("chrome")) {
-            if (isHeadless.equalsIgnoreCase("true")) {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless=new");
-                driver = new ChromeDriver(chromeOptions);
-            } else {
-                driver = new ChromeDriver();
-            }
+            driver = new ChromeDriver();
+//            if (isHeadless.equalsIgnoreCase("true")) {
+//                ChromeOptions chromeOptions = new ChromeOptions();
+//                chromeOptions.addArguments("--headless=new");
+//                driver = new ChromeDriver(chromeOptions);
+//            } else {
+//                driver = new ChromeDriver();
+//            }
         } else if (browser.equalsIgnoreCase("edge")) {
             driver = new EdgeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
