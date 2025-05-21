@@ -19,6 +19,9 @@ public class LoginPage {
     @FindBy(xpath = "//button[@class='btn']")
     WebElement SignInButton;
 
+    @FindBy(xpath = "//div[normalize-space()='Invalid Username or Password']")
+    public WebElement invalidLoginCredentialsHeader;
+
     public void enterUsername(String username) {
         this.username.sendKeys(username);
     }
@@ -27,6 +30,14 @@ public class LoginPage {
     }
     public void clickSignInButton() {
         this.SignInButton.click();
+    }
+
+    public boolean isInvalidLoginCredentialsMessageDisplayed() {
+        return invalidLoginCredentialsHeader.isDisplayed();
+    }
+
+    public String getInvalidLoginCredentialsMessage() {
+        return invalidLoginCredentialsHeader.getText();
     }
 
     public LoginPage() {
