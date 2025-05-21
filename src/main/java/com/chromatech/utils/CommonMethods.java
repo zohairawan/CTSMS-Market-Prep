@@ -272,4 +272,13 @@ public class CommonMethods extends WebDriverUtils {
         }
         return jsonFile;
     }
+
+    public static String randomStringGenerator(int lengthOfWord) {
+        StringBuilder randomWord = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < lengthOfWord; i++) {
+            randomWord.append((char) random.nextInt('a', ('z' + 1)));
+        }
+        return randomWord.toString();
+    }
 }
